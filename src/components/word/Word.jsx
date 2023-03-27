@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 
 
 
-export const Word = ({wordLetters, setWordLetters, found, setFound}) => {
+export const Word = ({wordLetters, found}) => {
     return(
         <div className="word">
             {wordLetters.map((letter, index) => {
                 console.log(letter);
-                return <WordLetter letter={letter} key={index} />
+                return <WordLetter letter={letter} key={index} found={found} />
             })
             }
         </div>

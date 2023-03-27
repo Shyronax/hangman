@@ -22,7 +22,7 @@ const App = () => {
         .then(response => response.json())
         .then(response => {
             let data = response.word;
-            console.log(data);
+            console.log("brique");
             data = data.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             setWord(data.toUpperCase());
         });
@@ -33,6 +33,7 @@ const App = () => {
         setWordLetters(word.split(''));
         console.log(wordLetters);
     },[word]);
+    
 
     const gameOver = () => {
         console.log('perdu!');
@@ -56,16 +57,16 @@ const App = () => {
         })
         if(wrong < wordLetters.length){
             document.getElementById(keyboardCharacter).classList.add('keyboard__letter--found');
+            setFound([...found, keyboardCharacter]);
         } else {
             document.getElementById(keyboardCharacter).classList.add('keyboard__letter--wrong');
             hangmanIncrement();
         }
-        ;
     }
 
     return(
         <div className="game">
-            <Word wordLetters={wordLetters} setWordLetters={setWordLetters} found={found} setFound={setFound} />
+            <Word wordLetters={wordLetters} found={found} />
             <Keyboard onCheck={onCheck} />
             <Hangman hangmanCount={hangmanCount} word={word} />
         </div>
