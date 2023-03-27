@@ -60,7 +60,7 @@ code {
 
 .keyboard__letter{
   border-radius: 10px;
-  border: solid 1px white;
+  border: solid 2px white;
   padding: 10px;
   margin: 10px;
   font-size: 2em;
@@ -75,6 +75,19 @@ code {
   color: greenyellow;
 }
 
-.hangman{
+.keyboard__letter--wrong{
+  border-color: red;
+  color: red;
+}
 
+.hangman{
+  font-size: 1.5em;
+}
+
+.hangman--perdu{
+  color: red;
+}
+
+.hangman--perdu strong{
+  color: gold;
 }

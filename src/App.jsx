@@ -17,17 +17,20 @@ const App = () => {
         body: new URLSearchParams({locale: 'fr-FR'})
       };
 
-    // useEffect(() => {
-    //   fetch('http://localhost:3001/', options)
-    //     .then(response => response.json())
-    //     .then(response => {
-    //         console.log(response);
-    //         setWord(response.word);
-    //         setWordLetters(response.word.split());
-    //         console.log(word);
-    //         console.log(wordLetters);
-    //     });
-    // }, []);
+    useEffect(() => {
+      fetch('http://localhost:3001/', options)
+        .then(response => response.json())
+        .then(response => {
+            let data = response.word;
+            console.log(data);
+            setWord(data);
+            console.log(word);
+        });
+    }, []);
+
+    useEffect(()=>{
+        setWordLetters(word.split());
+    },[word])
 
 
 
@@ -54,6 +57,7 @@ const App = () => {
         if(wrong < wordLetters.length){
             document.getElementById(keyboardCharacter).classList.add('keyboard__letter--found');
         } else {
+            document.getElementById(keyboardCharacter).classList.add('keyboard__letter--wrong');
             hangmanIncrement();
         }
         ;
@@ -61,9 +65,9 @@ const App = () => {
 
     return(
         <div className="game">
-            <Word wordLetters={wordLetters} found={found}/>
+            <Word wordLetters={wordLetters} setWordLetters={setWordLetters} found={found} setFound={setFound} />
             <Keyboard onCheck={onCheck} />
-            <Hangman hangmanCount={hangmanCount} />
+            <Hangman hangmanCount={hangmanCount} word={word} />
         </div>
     )
 }
