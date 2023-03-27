@@ -12,17 +12,69 @@ code {
     monospace;
 }
 
+.game{
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(42, 42, 77);
+  color: white;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .word{
   display: flex;
   flex-flow: row;
 }
 
+.word__letter{
+  background-color: rgb(82, 82, 148);
+  border-radius: 10px;
+  border: solid 3px white;
+  padding: 10px;
+  margin: 10px;
+  font-size: 2em;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  color: black;
+  filter: drop-shadow(7px 7px 1px black);
+}
+
+.word__letter--found{
+  background-color: whitesmoke;
+  border-color: gold;
+}
+
 .keyboard{
   display: flex;
   flex-flow: column;
+  align-items: center;
 }
 
 .keyboard__row{
   display: flex;
   flex-flow: row;
+}
+
+.keyboard__letter{
+  border-radius: 10px;
+  border: solid 1px white;
+  padding: 10px;
+  margin: 10px;
+  font-size: 2em;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  filter: drop-shadow(7px 7px 1px black);
+}
+
+.keyboard__letter--found{
+  border-color: greenyellow;
+  color: greenyellow;
+}
+
+.hangman{
+
 }
