@@ -23,17 +23,16 @@ const App = () => {
         .then(response => {
             let data = response.word;
             console.log(data);
-            setWord(data);
-            console.log(word);
+            data = data.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            setWord(data.toUpperCase());
         });
     }, []);
 
     useEffect(()=>{
-        setWordLetters(word.split());
-    },[word])
-
-
-
+        console.log(word);
+        setWordLetters(word.split(''));
+        console.log(wordLetters);
+    },[word]);
 
     const gameOver = () => {
         console.log('perdu!');
@@ -49,6 +48,7 @@ const App = () => {
 
     const onCheck = (keyboardCharacter) => {
         let wrong = 0;
+        console.log(wordLetters);
         wordLetters.forEach(function(wordLetter){
             if(!(wordLetter === keyboardCharacter)){
                 wrong += 1;

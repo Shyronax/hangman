@@ -6,12 +6,10 @@ import { useEffect } from 'react';
 export const Word = ({wordLetters, setWordLetters, found, setFound}) => {
     return(
         <div className="word">
-            {
-                useEffect(() => {
-                    wordLetters.map((letter) => {
-                        return <WordLetter letter={letter} />
-                    })
-                }, [wordLetters])
+            {wordLetters.map((letter, index) => {
+                console.log(letter);
+                return <WordLetter letter={letter} key={index} />
+            })
             }
         </div>
     )
